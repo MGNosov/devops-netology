@@ -80,3 +80,4 @@ override.tf.json - исключаются файлы override.tf.json
 
 terraform.rc - файлы terraform.rc игнорируются.
 
+newly added line.
