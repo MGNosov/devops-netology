@@ -54,15 +54,16 @@ for result in result_os.split('\n'):
         path = os.popen('pwd').read().replace('\n', '')
         print(f"{path}{prepare_result}")
 ```
-### Вывод команды "git status'
-    Changes not staged for commit:
+### Вывод команды "git status"
+````
+Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
 	modified:   .DS_Store
 	modified:   homework/.DS_Store
 	modified:   homework/python_script_hm/README.md
 	modified:   script4.py
-
+````
 
 ### Вывод скрипта при запуске при тестировании:
 ```
@@ -97,6 +98,7 @@ for result in result_os.split('\n'):
 
 ```
 ### Вывод команды git status
+````
 mgnosov@Maksims-MacBook-Pro devops-netology % git status
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -119,7 +121,7 @@ Changes not staged for commit:
 	modified:   homework/.DS_Store
 	modified:   homework/python_script_hm/README.md
 	modified:   script4.py
-
+````
 ### Вывод скрипта при запуске при тестировании:
 ```
 mgnosov@Maksims-MacBook-Pro devops-netology % python3 script.py /Users/mgnosov/devops-netology/homework/python_script_hm
