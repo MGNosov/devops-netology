@@ -1,0 +1,96 @@
+
+
+Mon May 16 17:31:35 2022
+Command line: TestDisk
+
+TestDisk 7.1, Data Recovery Utility, July 2019
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+OS: Darwin, kernel 20.6.0 (Darwin Kernel Version 20.6.0: Tue Feb 22 21:10:41 PST 2022; root:xnu-7195.141.26~1/RELEASE_X86_64) x86_64
+Compiler: GCC 4.2
+ext2fs lib: none, ntfs lib: none, reiserfs lib: none, ewf lib: none, curses lib: ncurses 5.7
+Hard disk list
+Disk /dev/disk2 - 8053 MB / 7680 MiB - 15728640 sectors, sector size=512
+Disk /dev/rdisk2 - 8053 MB / 7680 MiB - 15728640 sectors, sector size=512
+
+Partition table type defaults to EFI GPT
+Disk /dev/rdisk2 - 8053 MB / 7680 MiB
+Partition table type: Intel
+
+Analyse Disk /dev/rdisk2 - 8053 MB / 7680 MiB - 15728640 sectors
+Current partition structure:
+
+Partition sector doesn't have the endmark 0xAA55
+
+search_part()
+Disk /dev/rdisk2 - 8053 MB / 7680 MiB - 15728640 sectors
+FAT32 at 32/0/1
+FAT1 : 32-15362
+FAT2 : 15363-30693
+start_rootdir : 30694 root cluster : 2
+Data : 30694-15728605
+sectors : 15728608
+cluster_size : 8
+no_of_cluster : 1962239 (2 - 1962240)
+fat_length 15331 calculated 15331
+FAT differs, FAT sectors=0-16/15331
+heads/cylinder 255 (FAT) != 1 (HD)
+sect/track 63 (FAT) != 1 (HD)
+
+FAT32 at 32/0/1
+FAT: cluster=2(0x2), pos=30726
+     FAT32 LBA                     32   15728639   15728608 [XWFSBYWGSBM]
+     FAT32, blocksize=4096, 8053 MB / 7679 MiB
+get_geometry_from_list_part_aux head=1 nbr=2
+get_geometry_from_list_part_aux head=8 nbr=2
+get_geometry_from_list_part_aux head=16 nbr=2
+get_geometry_from_list_part_aux head=32 nbr=2
+Warning: the current number of heads per cylinder is 1 but the correct value may be 32.
+
+Results
+   * FAT32 LBA                     32   15728639   15728608 [XWFSBYWGSBM]
+     FAT32, blocksize=4096, 8053 MB / 7679 MiB
+
+interface_write()
+ 1 * FAT32 LBA                     32   15728639   15728608 [XWFSBYWGSBM]
+
+search_part()
+Disk /dev/rdisk2 - 8053 MB / 7680 MiB - 15728640 sectors
+FAT32 at 32/0/1
+FAT1 : 32-15362
+FAT2 : 15363-30693
+start_rootdir : 30694 root cluster : 2
+Data : 30694-15728605
+sectors : 15728608
+cluster_size : 8
+no_of_cluster : 1962239 (2 - 1962240)
+fat_length 15331 calculated 15331
+FAT differs, FAT sectors=0-16/15331
+heads/cylinder 255 (FAT) != 1 (HD)
+sect/track 63 (FAT) != 1 (HD)
+
+FAT32 at 32/0/1
+FAT: cluster=2(0x2), pos=30726
+     FAT32 LBA                     32   15728639   15728608 [XWFSBYWGSBM]
+     FAT32, blocksize=4096, 8053 MB / 7679 MiB
+FAT32 at 38/0/1
+FAT1 : 32-15362
+FAT2 : 15363-30693
+start_rootdir : 30694 root cluster : 2
+Data : 30694-15728605
+sectors : 15728608
+cluster_size : 8
+no_of_cluster : 1962239 (2 - 1962240)
+fat_length 15331 calculated 15331
+FAT differs, FAT sectors=0-16/15331
+heads/cylinder 255 (FAT) != 1 (HD)
+sect/track 63 (FAT) != 1 (HD)
+set_FAT_info: name from BS used
+
+FAT32 at 38/0/1
+FAT: Directory entry is marked as free.
+FAT: cluster=2(0x2), pos=30732
+     FAT32 LBA                     38   15728645   15728608
+     FAT32, blocksize=4096, 8053 MB / 7679 MiB
+This partition ends after the disk limits. (start=38, size=15728608, end=15728645, disk end=15728640)
+SIGINT detected! TestDisk has been killed.
