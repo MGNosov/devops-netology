@@ -101,7 +101,7 @@ a43749efe4ec: Mounted from library/nginx
 1.21.6: digest: sha256:302fd399791e6f435f496d59942c26b011cbee210166b95e6575474bc533da62 size: 2396
 
 ````
-![Текст](/Users/mgnosov/devops-netology/homework/Virt-Homework/HM_5.3./img.png)
+![Текст](https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.3./img.png)
 
 ###Содержимое Dockerfile
 ````
