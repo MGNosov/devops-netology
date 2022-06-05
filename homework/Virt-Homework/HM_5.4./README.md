@@ -21,7 +21,7 @@
 
 ##Решение
 <p align="cetner">
-   <img src="/users/mgnosov/devops-netology/homework/Virt-Homework/HM_5.4./img1.png">
+   <img src="https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.4./img1.png">
 </p>
 
 ## Задача 2
@@ -33,8 +33,7 @@
 
 ##Решение
 <p align="cetner">
-   <img src="/users/mgnosov/devops-netology/homework/Virt-Homework/HM_5.4./img2
-.png">
+   <img src="https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.4./img2.png">
 </p>
 
 ## Задача 3
@@ -46,8 +45,7 @@
 
 ##Решение
 <p align="cetner">
-   <img src="/users/mgnosov/devops-netology/homework/Virt-Homework/HM_5.4./img3
-.png">
+   <img src="https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.4./img3.png">
 </p>
 
 ## Задача 4 (*)
