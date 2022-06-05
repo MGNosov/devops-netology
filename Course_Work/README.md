@@ -94,7 +94,7 @@ Other commands:
     version-history      Prints the version history of the target Vault server
 ``````
 
-####Запуск сервера
+#### Запуск сервера
 ``````
 root@vagrant:/home/vagrant# vault server -dev -dev-root-token-id root
 ==> Vault server configuration:
@@ -178,7 +178,7 @@ Development mode should NOT be used in production installations!
 root@vagrant:/home/vagrant# export VAULT_ADDR=http://127.0.0.1:8200
 root@vagrant:/home/vagrant# export VAULT_TOKEN=root
 ``````
-####Generate root CA
+#### Generate root CA
 ``````
 root@vagrant:/home/vagrant# vault secrets enable \
 > -path=pki_root_ca \
@@ -201,7 +201,7 @@ root@vagrant:/home/vagrant# vault write pki_root_ca/config/urls \
 > crl_distribution_points="$VAULT_ADDR/v1/pki_root_ca/crl"
 Success! Data written to: pki_root_ca/config/urls
 ``````
-####Generate intermediate CA
+#### Generate intermediate CA
 ``````
 root@vagrant:/home/vagrant# vault secrets enable \
 > -path=pki_int_ca \
@@ -235,7 +235,7 @@ root@vagrant:/home/vagrant# vault write pki_int_ca/config/urls \
 > crl_distribution_points="$VAULT_ADDR/v1/pki_int_ca/crl"
 Success! Data written to: pki_int_ca/config/urls
 ``````
-####Create a role
+#### Create a role
 ````
 root@vagrant:/home/vagrant# vault write pki_int_ca/roles/example-dot-com \
 > country="Russian Federation" \
@@ -261,7 +261,7 @@ root@vagrant:/home/vagrant# vault write pki_int_ca/roles/example-dot-com \
 > require_cn=true
 Success! Data written to: pki_int_ca/roles/example-dot-com
 ````
-####Request certificate
+#### Request certificate
 ``````
 root@vagrant:/home/vagrant# vault write -format=json pki_int_ca/issue/example-dot-com \
 > common_name="mgnosov.example.com" \
@@ -274,16 +274,16 @@ root@vagrant:/home/vagrant# cat certificate.crt | grep serial_number
     "serial_number": "56:dd:72:c3:5d:7c:8f:f2:48:62:5b:71:4e:30:76:a9:c0:fb:33:72"
 ``````
 
-####Установка сертификата в доверенные
+#### Установка сертификата в доверенные
 ``````
 Копирую корневой сертификат из виртуальной машини в хостовую
 root@vagrant:/home/vagrant# cp CA_root.crt /vagrant 
 root@vagrant:/home/vagrant# cat pki-root-ca.json | grep serial_number
     "serial_number": "6d:23:36:2a:43:ad:61:57:ce:de:e9:4d:47:be:12:28:5f:3c:a8"
 ``````
-<img align="cetner" src="[Course_Work/img/img00.png](https://github.com/MGNosov/devops-netology/blob/a36d1fcb8ddc4860524a633c0f272c35bd1269e7/Course_Work/img/img00.png)">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Course_Work/img/img00.png">
 
-####Процесс установки и настройки сервера nginx
+#### Процесс установки и настройки сервера nginx
 ``````
 root@vagrant:/home/vagrant# apt install nginx
 root@vagrant:/home/vagrant# systemctl status nginx
@@ -323,9 +323,9 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ``````
 #####Страница сервера nginx в браузере хоста не содержит предупреждений
-<img align="cetner" src="[/users/mgnosov/devops-netology/Course_Work/img/img01.png](https://github.com/MGNosov/devops-netology/blob/a36d1fcb8ddc4860524a633c0f272c35bd1269e7/Course_Work/img/img01.png)">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main//Course_Work/img/img01.png">
 
-####Скрипт генерации нового сертификата работает (сертификат сервера ngnix должен быть "зеленым")
+#### Скрипт генерации нового сертификата работает (сертификат сервера ngnix должен быть "зеленым")
 ``````
 #!/bin/bash
 vault write -format=json pki_int_ca/issue/example-dot-com \
@@ -338,14 +338,14 @@ cat certificate_nginx.crt | jq -r '.data.private_key' > /etc/nginx/ssl/mgnosov_n
 systemctl restart nginx
 cat certificate_nginx.crt | grep serial_number>&1
 ``````
-#######Запускаем и проверяем скрипт
+####### Запускаем и проверяем скрипт
 ``````
 root@vagrant:/home/vagrant# ./cert_script.sh
     "serial_number": "49:d2:9f:bb:cb:d8:39:fd:39:13:62:b5:96:74:55:11:93:78:ee:4c"
 ``````
-<img align="cetner" src="[/users/mgnosov/devops-netology/Course_Work/img/img02.png](https://github.com/MGNosov/devops-netology/blob/a36d1fcb8ddc4860524a633c0f272c35bd1269e7/Course_Work/img/img02.png)">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main//Course_Work/img/img02.png">
 
-####Crontab работает (выберите число и время так, чтобы показать что crontab запускается и делает что надо)
+#### Crontab работает (выберите число и время так, чтобы показать что crontab запускается и делает что надо)
 ``````
  root@vagrant:/home/vagrant# crontab -e
  GNU nano 4.8                                                     /tmp/crontab.nKJK1S/crontab                                                      Modified  
