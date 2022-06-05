@@ -338,7 +338,7 @@ cat certificate_nginx.crt | jq -r '.data.private_key' > /etc/nginx/ssl/mgnosov_n
 systemctl restart nginx
 cat certificate_nginx.crt | grep serial_number>&1
 ``````
-####### Запускаем и проверяем скрипт
+###### Запускаем и проверяем скрипт
 ``````
 root@vagrant:/home/vagrant# ./cert_script.sh
     "serial_number": "49:d2:9f:bb:cb:d8:39:fd:39:13:62:b5:96:74:55:11:93:78:ee:4c"
