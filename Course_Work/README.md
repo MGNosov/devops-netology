@@ -322,7 +322,7 @@ root@vagrant:/home/vagrant# nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ``````
-#####Страница сервера nginx в браузере хоста не содержит предупреждений
+##### Страница сервера nginx в браузере хоста не содержит предупреждений
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main//Course_Work/img/img01.png">
 
 #### Скрипт генерации нового сертификата работает (сертификат сервера ngnix должен быть "зеленым")
