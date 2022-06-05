@@ -23,7 +23,7 @@
 
 ### Результат
 
-#####- Процесс установки и настройки ufw
+##### Процесс установки и настройки ufw
 ``````
 root@vagrant:/home/vagrant# ufw default deny incoming
 Default incoming policy changed to 'deny'
@@ -53,7 +53,7 @@ Anywhere on lo             ALLOW       Anywhere
 Anywhere                   ALLOW OUT   Anywhere on lo            
 
 ``````
-###- Процесс установки и выпуска сертификата с помощью hashicorp vault
+### Процесс установки и выпуска сертификата с помощью hashicorp vault
 #### Установка Hashicorp Vault
 ``````
 root@vagrant:/home/vagrant# sudo apt update && sudo apt install gpg
@@ -281,7 +281,7 @@ root@vagrant:/home/vagrant# cp CA_root.crt /vagrant
 root@vagrant:/home/vagrant# cat pki-root-ca.json | grep serial_number
     "serial_number": "6d:23:36:2a:43:ad:61:57:ce:de:e9:4d:47:be:12:28:5f:3c:a8"
 ``````
-<img align="cetner" src="/users/mgnosov/devops-netology/Course_Work/img/img00.png">
+<img align="cetner" src="[Course_Work/img/img00.png](https://github.com/MGNosov/devops-netology/blob/a36d1fcb8ddc4860524a633c0f272c35bd1269e7/Course_Work/img/img00.png)">
 
 ####Процесс установки и настройки сервера nginx
 ``````
@@ -323,7 +323,7 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ``````
 #####Страница сервера nginx в браузере хоста не содержит предупреждений
-<img align="cetner" src="/users/mgnosov/devops-netology/Course_Work/img/img01.png">
+<img align="cetner" src="[/users/mgnosov/devops-netology/Course_Work/img/img01.png](https://github.com/MGNosov/devops-netology/blob/a36d1fcb8ddc4860524a633c0f272c35bd1269e7/Course_Work/img/img01.png)">
 
 ####Скрипт генерации нового сертификата работает (сертификат сервера ngnix должен быть "зеленым")
 ``````
@@ -343,7 +343,7 @@ cat certificate_nginx.crt | grep serial_number>&1
 root@vagrant:/home/vagrant# ./cert_script.sh
     "serial_number": "49:d2:9f:bb:cb:d8:39:fd:39:13:62:b5:96:74:55:11:93:78:ee:4c"
 ``````
-<img align="cetner" src="/users/mgnosov/devops-netology/Course_Work/img/img02.png">
+<img align="cetner" src="[/users/mgnosov/devops-netology/Course_Work/img/img02.png](https://github.com/MGNosov/devops-netology/blob/a36d1fcb8ddc4860524a633c0f272c35bd1269e7/Course_Work/img/img02.png)">
 
 ####Crontab работает (выберите число и время так, чтобы показать что crontab запускается и делает что надо)
 ``````
