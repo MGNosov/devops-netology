@@ -46,7 +46,7 @@ docker node ls
 docker service ls
 ```
 #### Результат
-<img align="cetner" "https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.5./img/img02.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.5./img/img02.png">
 
 ## Задача 4 (*)
 
