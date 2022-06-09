@@ -21,7 +21,7 @@
 - Какой алгоритм выбора лидера используется в Docker Swarm кластере?
 - Что такое Overlay Network?
 
-####Ответ
+#### Ответ
 
 - В режиме replication можно указать количество запускаемых реплик для выполнения одной задачи. В режиме global все ноды обслуживают одну задачу. Соответственно при добавлении ещё одной ноды, docker swarm всключит её в выполение задачи.
 - Для выборов лидера используется алгоритм распределённого консенсуса (RAFT).
@@ -34,8 +34,8 @@
 ```
 docker node ls
 ```
-####Результат
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Virt-Homework/HM_5.5./img/img01.png">
+#### Результат
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.5./img/img01.png">
 
 ## Задача 3
 
@@ -45,8 +45,8 @@ docker node ls
 ```
 docker service ls
 ```
-####Результат
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Virt-Homework/HM_5.5./img/img02.png">
+#### Результат
+<img align="cetner" "https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_5.5./img/img02.png">
 
 ## Задача 4 (*)
 
