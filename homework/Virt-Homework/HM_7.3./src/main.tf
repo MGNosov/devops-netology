@@ -10,8 +10,8 @@ terraform {
     bucket     = "test01"
     region     = "ru-central1"
     key        = "~/terraform.tfstate"
-    access_key = "YCAJE3TnnQHY1mG5FA7CnJpw1"
-    secret_key = "YCPlSskQ0KF6ir5UjVVEhhF5DRvqy3YLNrm5p5Vw"
+    access_key = "YCAJE*********nJpw1"
+    secret_key = "YCPlSsk**********3YLNrm5p5Vw"
 
     skip_region_validation      = true
     skip_credentials_validation = true
@@ -19,7 +19,7 @@ terraform {
 }
 
 provider "yandex" {
-  token     = "AQAAAAAnxe1uAATuwbFCSoUwM0v_p5OSKy3TFf0"
+  token     = "AQAAAAAn************TFf0"
   cloud_id  = "b1g9cb14mht57dso4pco"
   folder_id = "b1gi5ufjf161iudar0ce"
   zone      = "ru-central1-a"
