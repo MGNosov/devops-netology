@@ -10,8 +10,7 @@
 [здесь](https://www.terraform.io/docs/backends/types/s3.html).
 2. Зарегистрируйте бэкэнд в терраформ проекте как описано по ссылке выше. 
 ##### Результат (Yandex Cloud)
-<img align="cetner" src=/Users/mgnosov/devops-netology/homework/Virt-Homework/HM_7.3./img/img00.png>
-[Конфигурационный файл](/Users/mgnosov/devops-netology/homework/Virt-Homework/HM_7.3./src/main.tf)
+<img align="cetner" src=https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_7.3./img/img00.png>
 
 
 ## Задача 2. Инициализируем проект и создаем воркспейсы. 
@@ -229,7 +228,7 @@ Plan: 4 to add, 0 to change, 0 to destroy.
 
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
 ````
-[Конфигурационный файл] ()
+[Конфигурационный файл](https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_7.3./src/main.tf)
 ---
 
 ### Как cдавать задание
