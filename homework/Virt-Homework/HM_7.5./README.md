@@ -7,7 +7,7 @@
 1. Воспользуйтесь инструкций с официального сайта: [https://golang.org/](https://golang.org/).
 2. Так же для тестирования кода можно использовать песочницу: [https://play.golang.org/](https://play.golang.org/).
 ##### результат
-<img align="cetner" src=/Users/mgnosov/devops-netology/homework/Virt-Homework/HM_7.5./img/img00.png>
+<img align="cetner" src=https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_7.5./img/img00.png>
 
 ## Задача 2. Знакомство с gotour.
 У Golang есть обучающая интерактивная консоль [https://tour.golang.org/](https://tour.golang.org/). 
