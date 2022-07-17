@@ -1,4 +1,4 @@
-# Домашнее задание к занятию "7.5. Основы golang"
+# Домашнее задание к занятию "7.5. Основы golang" Носов Максим
 
 С `golang` в рамках курса, мы будем работать не много, поэтому можно использовать любой IDE. 
 Но рекомендуем ознакомиться с [GoLand](https://www.jetbrains.com/ru-ru/go/).  
@@ -7,7 +7,7 @@
 1. Воспользуйтесь инструкций с официального сайта: [https://golang.org/](https://golang.org/).
 2. Так же для тестирования кода можно использовать песочницу: [https://play.golang.org/](https://play.golang.org/).
 ##### результат
-<img align="cetner" src=/Users/mgnosov/devops-netology/homework/Virt-Homework/HM_7.4./img/img00.png>
+<img align="cetner" src=/Users/mgnosov/devops-netology/homework/Virt-Homework/HM_7.5./img/img00.png>
 
 ## Задача 2. Знакомство с gotour.
 У Golang есть обучающая интерактивная консоль [https://tour.golang.org/](https://tour.golang.org/). 
