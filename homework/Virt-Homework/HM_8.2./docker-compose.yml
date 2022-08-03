@@ -1,0 +1,12 @@
+version: "2.6.1"
+
+services:
+  elasticsearch:
+    image: pycontribs/ubuntu
+    container_name: elasticsearch
+    tty: true
+
+  kibana:
+    image: pycontribs/ubuntu
+    container_name: kibana
+    tty: true

@@ -1,0 +1,4 @@
+---
+kibana_version: "7.15.2"
+kibana_home: "/opt/kibana/{{ kibana_version }}"
+ansible_python_interpeter: "/usr/local/bin/python3"

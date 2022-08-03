@@ -1,0 +1,11 @@
+---
+elasticsearch:
+  hosts:
+    elasticsearch:
+      ansible_connection: docker
+      ansible_python_interpreter: /usr/bin/python3
+kibana:
+  hosts:
+    kibana:
+      ansible_connection: docker
+      ansible_python_interpreter: /usr/bin/python3
