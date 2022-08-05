@@ -31,12 +31,13 @@
 </p>
 
 Создать задачу с типом bug, попытаться провести его по всему workflow до Done. Создать задачу с типом epic, к ней привязать несколько задач с типом task, провести их по всему workflow до Done. При проведении обеих задач по статусам использовать kanban. Вернуть задачи в статус Open.
-### Результат
+
 ### Результат
 <p align="cetner">
    <img src="https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_9.1./imgs/img02.png">
 </p>
 Перейти в scrum, запланировать новый спринт, состоящий из задач эпика и одного бага, стартовать спринт, провести задачи до состояния Closed. Закрыть спринт.
+
 ### Результат
 <p align="cetner">
    <img src="https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_9.1./imgs/img03.png">
@@ -44,7 +45,9 @@
 Если всё отработало в рамках ожидания - выгрузить схемы workflow для импорта в XML. Файлы с workflow приложить к решению задания.
 
 ### Результат
+
 [Workflow for bugs](https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_9.1./xmls/Workflow_for_bugs.xml)
+
 [Workflow for other tasks](https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_9.1./xmls/Workflow_for_other_tasks.xml)
 ---
 
