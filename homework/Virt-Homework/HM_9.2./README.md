@@ -141,7 +141,7 @@ INFO: ------------------------------------------------------------------------
 </p>
 7. Исправляем ошибки, которые он выявил(включая warnings)
 
-[исправленый файл](https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_9.2./example/fail.py)
+[Исправленный файл](https://github.com/MGNosov/devops-netology/blob/main/homework/Virt-Homework/HM_9.2./example/fail.py)
 
 8. Запускаем анализатор повторно - проверяем, что QG пройдены успешно
 <p align="cetner">
