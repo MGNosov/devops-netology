@@ -1,0 +1,16 @@
+# Название кластера
+cluster.name: elasticsearch
+
+ # Имя узла
+node.name: netology-test
+
+ # Каталог хранения файла данных и файла журнала
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+
+ # Настройки сети
+network.host: 0.0.0.0
+http.port: 9200
+
+ # Настройки кластера
+cluster.initial_master_nodes: ["netology-test"]
