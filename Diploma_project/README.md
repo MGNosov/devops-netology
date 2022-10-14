@@ -4,7 +4,7 @@
 ### 1. Регистрация доменного имени
 #### Результат
 Доменное имя ``mgnosov.site`` регистратор [reg.ru](https://www.reg.ru/)
-<img align="cetner" src="[/Users/MGNosov/devops-netology](https://github.com/MGNosov/devopsnetology/blob/main)/Diploma_Project/img/img00.png">
+<img align="cetner" src="[https://github.com/MGNosov/devops-netology/blob/31a791495ff76aaff95ebdefffd4e8d6ae616444/Diploma_Project/img/img00.png">
 ### 2. Cоздание инфраструктуры
 #### Результат
 1. Использовался ранее созданный сервисный аккаунт.
@@ -17,7 +17,7 @@ mgnosov@Maksims-MacBook-Pro ~ % yc iam service-account list
 +----------------------+-----------+
 ````
 2. Готовый бакет в Yandex.Cloud.
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img01.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/31a791495ff76aaff95ebdefffd4e8d6ae616444/Diploma_Project/img/img01.png">
 Конфигурационный файл для создания бакета [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/bucket/main.tf)
 
 3. Были созданы два воркспейся ``stage`` и ``prod``.
