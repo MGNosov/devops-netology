@@ -17,19 +17,19 @@ mgnosov@Maksims-MacBook-Pro ~ % yc iam service-account list
 +----------------------+-----------+
 ````
 2. Готовый бакет в Yandex.Cloud.
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/31a791495ff76aaff95ebdefffd4e8d6ae616444/Diploma_Project/img/img01.png">
-Конфигурационный файл для создания бакета [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/bucket/main.tf)
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img01.png">
+Конфигурационный файл для создания бакета [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/bucket/main.tf)
 
 3. Были созданы два воркспейся ``stage`` и ``prod``.
 4. Конфигурационные файлы Terrafrom: 
- - [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/main.tf);
- - [network.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/network.tf);
- - [output.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/output.tf);
- - [provider.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/provider.tf);
- - [varibales.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/varibales.tf);
+ - [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/main.tf);
+ - [network.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/network.tf);
+ - [output.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/output.tf);
+ - [provider.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/provider.tf);
+ - [varibales.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/variables.tf);
 
-В процессе подготовки был дополнительно создан файл [meta.txt](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/meta.txt) для получения ``root`` доступа к вирутальным машинам. 
-Соответственно конфигурация в [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/main.tf) была изменена с...
+В процессе подготовки был дополнительно создан файл [meta.txt](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/meta.txt) для получения ``root`` доступа к вирутальным машинам. 
+Соответственно конфигурация в [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Terrafrom/main.tf) была изменена с...
 ````
 metadata = {
     ssh-keys = "root:${file("~/.ssh/id_rsa.pub")}"
@@ -65,22 +65,14 @@ internal_ip_address_revproxy_yandex_cloud = "10.1.0.16"
 internal_ip_address_runner_yandex_cloud = "10.3.0.9"
 ````
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img02.png">
-Удаляем виртуальные машины:
-
-````
-mgnosov@Maksims-MacBook-Pro iac % terraform destroy -auto-approve
-.....
-Destroy complete! Resources: 12 destroyed.
-````
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img10.png">
 
 
 ### 3. Установка Nginx и LetsEncrypt
 #### Результат
 Для выполнения данной задачи за основу была взята роль [ansible-letsencrypt-nginx-revproxy](https://github.com/hispanico/ansible-letsencrypt-nginx-revproxy).
 1. Добавлены А-записи в личном кабинете [reg.ru](reg.ru)
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img03.png">
-2. Добавляем upstream'ы в файл [/default/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Ansible/roles/revers-proxy/defaults/main.yml)
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img03.png">
+2. Добавляем upstream'ы в файл [/default/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/revers-proxy/defaults/main.yml)
 ````
 nginx_revproxy_sites:                                         # List of sites to reverse proxy
   mgnosov.site:                                                # Domain name
@@ -148,7 +140,7 @@ nginx_revproxy_remove_webroot_sites: false
 # De-activate Sites
 nginx_revproxy_de_activate_sites: false
 ````
-3. Добавляем IP адреса вирутальных машин в файл [inventory](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Ansible/inventory)
+3. Добавляем IP адреса вирутальных машин в файл [inventory](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/inventory)
 ````
 [proxy_server]
 revproxy.mgnosov.site
@@ -205,25 +197,25 @@ PLAY RECAP *********************************************************************
 revproxy.mgnosov.site      : ok=26   changed=22   unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
 ````
 #### WordPres
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img04.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img04.png">
 
 #### GitLab
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img05.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img05.png">
 
 #### Grafana
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img06.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img06.png">
 
 #### Prometheus
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img07.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img07.png">
 
 #### Alertmanager
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img08.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img08.png">
 
 ### 4. Установка кластера MySQL
 #### Результат
 Для выполнения данной задачи за основу была взята роль [geerlingguy.mysql](https://github.com/geerlingguy/ansible-role-mysql).  
-Пользователя ``wordpress`` добавляем в файл [/my_sql/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Ansible/my_sql/defaults/main.yml)  
-Роли ``master`` и ``slave`` задаются в файле [inventory](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/inventory)
+Пользователя ``wordpress`` добавляем в файл [/my_sql/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/my_sql/defaults/main.yml)  
+Роли ``master`` и ``slave`` задаются в файле [inventory](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/inventory)
 ````
 .....
 db01.mgnosov.site mysql_server_id=1 mysql_replication_role=master
@@ -261,7 +253,7 @@ ok: [app.mgnosov.site]
 PLAY RECAP *********************************************************************
 app.mgnosov.site           : ok=25   changed=23   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ````
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img09.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img09.png">
 
 ###6. Установка Gitlab CE и Gitlab Runner
 #### Результат
@@ -269,9 +261,9 @@ app.mgnosov.site           : ok=25   changed=23   unreachable=0    failed=0    s
 - [geerlingguy.gitlab](https://github.com/geerlingguy/ansible-role-gitlab)
 - [riemers.gitlab-runner](https://github.com/riemers/ansible-gitlab-runner)
 
-Пароль для ``root`` был заранее добавлен в [/gitlab/defaults/main.yml](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/gitlab/defaults/main.yml) 
+Пароль для ``root`` был заранее добавлен в [/gitlab/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/gitlab/defaults/main.yml) 
 
-Токен для подключения так же был добавлен в файлы [/gitlab/defaults/main.yml](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/gitlab/defaults/main.yml) и [/runner/defaults/main.yml](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/runner/defaults/main.yml). Токен был сгенерирован раннее на тестовых прогонах через web-интерфейс Gitlab.
+Токен для подключения так же был добавлен в файлы [/gitlab/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/gitlab/defaults/main.yml) и [/runner/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/runner/defaults/main.yml). Токен был сгенерирован раннее на тестовых прогонах через web-интерфейс Gitlab.
 ````
 mgnosov@Maksims-MacBook-Pro ansible % ansible-playbook playbook.yml -i inventory
 
@@ -290,11 +282,11 @@ gitlab.mgnosov.site        : ok=20   changed=13   unreachable=0    failed=0    s
 runner.mgnosov.site        : ok=88   changed=25   unreachable=0    failed=0    skipped=111  rescued=0    ignored=0 
 ````
 1. Gitlab доступен по https.
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img11.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img11.png">
 Runner так же подключен.
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img12.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img12.png">
 2. Добавляем ssh-ключи в переменную ``STAGE_PRIVATE_KEY``
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img13.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img13.png">
 3. Создаем репозиторий.
 ````
 mgnosov@Maksims-MacBook-Pro final_project % git clone http://gitlab.mgnosov.site/gitlab-instance-165100fe/Monitoring.git
@@ -384,8 +376,8 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To http://gitlab.mgnosov.site/gitlab-instance-165100fe/Monitoring.git
    a0b0527..aeceaea  main -> main
 ````
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img14.png">
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img15.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img14.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img15.png">
 
 Проверяем изменения на вирутальной машине.
 ````
@@ -421,10 +413,19 @@ revproxy.mgnosov.site      : ok=21   changed=5    unreachable=0    failed=0    s
 runner.mgnosov.site        : ok=84   changed=0    unreachable=0    failed=0    skipped=112  rescued=0    ignored=0
 ````
 #### Prometheus
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img16.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img16.png">
 
 #### Alertmanager
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img17.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img17.png">
 
 #### Grafana
-<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img18.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img18.png">
+
+### Удаляем виртуальные машины:
+
+````
+mgnosov@Maksims-MacBook-Pro iac % terraform destroy -auto-approve
+.....
+Destroy complete! Resources: 12 destroyed.
+````
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img10.png">
