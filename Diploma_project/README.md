@@ -4,7 +4,7 @@
 ### 1. Регистрация доменного имени
 #### Результат
 Доменное имя ``mgnosov.site`` регистратор [reg.ru](https://www.reg.ru/)
-<img align="cetner" src="[https://github.com/MGNosov/devops-netology/blob/31a791495ff76aaff95ebdefffd4e8d6ae616444/Diploma_Project/img/img00.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img00.png">
 ### 2. Cоздание инфраструктуры
 #### Результат
 1. Использовался ранее созданный сервисный аккаунт.
