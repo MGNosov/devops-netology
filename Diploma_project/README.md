@@ -1,7 +1,7 @@
 # Дипломный проект
 ## Этапы выполнения:
 
-###1. Регистрация доменного имени
+### 1. Регистрация доменного имени
 #### Результат
 Доменное имя ``mgnosov.site`` регистратор [reg.ru](https://www.reg.ru/)
 <img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img00.png">
@@ -17,19 +17,19 @@ mgnosov@Maksims-MacBook-Pro ~ % yc iam service-account list
 +----------------------+-----------+
 ````
 2. Готовый бакет в Yandex.Cloud.
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img01.png">
-Конфигурационный файл для создания бакета [main.tf](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/bucket/main.tf)
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img01.png">
+Конфигурационный файл для создания бакета [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/bucket/main.tf)
 
 3. Были созданы два воркспейся ``stage`` и ``prod``.
 4. Конфигурационные файлы Terrafrom: 
- - [main.tf](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/main.tf);
- - [network.tf](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/network.tf);
- - [output.tf](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/output.tf);
- - [provider.tf](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/provider.tf);
- - [varibales.tf](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/varibales.tf);
+ - [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/main.tf);
+ - [network.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/network.tf);
+ - [output.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/output.tf);
+ - [provider.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/provider.tf);
+ - [varibales.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/varibales.tf);
 
 В процессе подготовки был дополнительно создан файл [meta.txt](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/meta.txt) для получения ``root`` доступа к вирутальным машинам. 
-Соответственно конфигурация в [main.tf](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Terraform/main.tf) была изменена с...
+Соответственно конфигурация в [main.tf](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Terraform/main.tf) была изменена с...
 ````
 metadata = {
     ssh-keys = "root:${file("~/.ssh/id_rsa.pub")}"
@@ -51,20 +51,20 @@ Outputs:
 
 external_ip_address_app_yandex_cloud = "178.154.228.124"
 external_ip_address_db01_yandex_cloud = "178.154.229.88"
-external_ip_address_db02_yandex_cloud = "178.154.227.29"
+external_ip_address_db02_yandex_cloud = "51.250.85.93"
 external_ip_address_gitlab_yandex_cloud = "178.154.203.46"
 external_ip_address_monitoring_yandex_cloud = "178.154.226.158"
 external_ip_address_revproxy_yandex_cloud = "84.201.128.39"
 external_ip_address_runner_yandex_cloud = "178.154.228.15"
 internal_ip_address_app_yandex_cloud = "10.2.0.10"
 internal_ip_address_db01_yandex_cloud = "10.2.0.27"
-internal_ip_address_db02_yandex_cloud = "10.2.0.27"
+internal_ip_address_db02_yandex_cloud = "10.2.0.11"
 internal_ip_address_gitlab_yandex_cloud = "10.3.0.11"
 internal_ip_address_monitoring_yandex_cloud = "10.4.0.6"
 internal_ip_address_revproxy_yandex_cloud = "10.1.0.16"
 internal_ip_address_runner_yandex_cloud = "10.3.0.9"
 ````
-<img align="cetner" src="/Users/mgnosov/devops-netology/Diploma_project/img/img02.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img02.png">
 Удаляем виртуальные машины:
 
 ````
@@ -72,15 +72,15 @@ mgnosov@Maksims-MacBook-Pro iac % terraform destroy -auto-approve
 .....
 Destroy complete! Resources: 12 destroyed.
 ````
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img10.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img10.png">
 
 
-###3. Установка Nginx и LetsEncrypt
+### 3. Установка Nginx и LetsEncrypt
 #### Результат
 Для выполнения данной задачи за основу была взята роль [ansible-letsencrypt-nginx-revproxy](https://github.com/hispanico/ansible-letsencrypt-nginx-revproxy).
 1. Добавлены А-записи в личном кабинете [reg.ru](reg.ru)
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img03.png">
-2. Добавляем upstream'ы в файл [/default/main.yml](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Ansible/roles/revers-proxy/defaults/main.yml)
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img03.png">
+2. Добавляем upstream'ы в файл [/default/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Ansible/roles/revers-proxy/defaults/main.yml)
 ````
 nginx_revproxy_sites:                                         # List of sites to reverse proxy
   mgnosov.site:                                                # Domain name
@@ -90,7 +90,7 @@ nginx_revproxy_sites:                                         # List of sites to
       - mgnosov.site
       - www.mgnosov.site
     upstreams:                                                # List of Upstreams
-      - {backend_address: 10.2.0.20, backend_port: 80}
+      - {backend_address: 10.2.0.10, backend_port: 80}
     ssl: true                                                 # Set to True if you want to redirect http to https
     hsts_max_age: 63072000                                    # Set HSTS header with max-age defined
     letsencrypt: true                                         # Set to True if you want use letsencrypt
@@ -101,7 +101,7 @@ nginx_revproxy_sites:                                         # List of sites to
     domains:                                                  # List of server_name aliases
       - gitlab.mgnosov.site
     upstreams:                                                # List of Upstreams
-      - {backend_address: 10.3.0.26, backend_port: 80}
+      - {backend_address: 10.3.0.11, backend_port: 80}
     ssl: true                                                 # Set to True if you want to redirect http to https
     hsts_max_age: 63072000                                    # Set HSTS header with max-age defined
     letsencrypt: true                                         # Set to True if you want use letsencrypt
@@ -112,7 +112,7 @@ nginx_revproxy_sites:                                         # List of sites to
     domains:                                                  # List of server_name aliases
       - grafana.mgnosov.site
     upstreams:                                                # List of Upstreams
-      - {backend_address: 10.4.0.3, backend_port: 3000}
+      - {backend_address: 10.4.0.6, backend_port: 3000}
     ssl: true                                                 # Set to True if you want to redirect http to https
     hsts_max_age: 63072000                                    # Set HSTS header with max-age defined
     letsencrypt: true                                         # Set to True if you want use letsencrypt
@@ -123,7 +123,7 @@ nginx_revproxy_sites:                                         # List of sites to
     domains:                                                  # List of server_name aliases
       - prometheus.mgnosov.site
     upstreams:                                                # List of Upstreams
-      - {backend_address: 10.4.0.3, backend_port: 9090}
+      - {backend_address: 10.4.0.6, backend_port: 9090}
     ssl: true                                                 # Set to True if you want to redirect http to https
     hsts_max_age: 63072000                                    # Set HSTS header with max-age defined
     letsencrypt: true                                         # Set to True if you want use letsencrypt
@@ -134,7 +134,7 @@ nginx_revproxy_sites:                                         # List of sites to
     domains:                                                  # List of server_name aliases
       - alertmanager.mgnosov.site
     upstreams:                                                # List of Upstreams
-      - {backend_address: 10.4.0.3, backend_port: 9093}
+      - {backend_address: 10.4.0.6, backend_port: 9093}
     ssl: true                                                 # Set to True if you want to redirect http to https
     hsts_max_age: 63072000                                    # Set HSTS header with max-age defined
     letsencrypt: true                                         # Set to True if you want use letsencrypt
@@ -148,7 +148,7 @@ nginx_revproxy_remove_webroot_sites: false
 # De-activate Sites
 nginx_revproxy_de_activate_sites: false
 ````
-3. Добавляем IP адреса вирутальных машин в файл [inventory](/Users/MGNosov/Devopvs-Netology/Diploma_Project/src/Ansible/inventory)
+3. Добавляем IP адреса вирутальных машин в файл [inventory](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Ansible/inventory)
 ````
 [proxy_server]
 revproxy.mgnosov.site
@@ -165,7 +165,7 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/
 [mysql_db02]
 db02.mgnosov.site mysql_server_id=2 mysql_replication_role=slave
 [mysql_db02:vars]
-ansible_host=178.154.227.29
+ansible_host=51.250.85.93
 ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 [wordpress]
@@ -204,26 +204,26 @@ ok: [revproxy.mgnosov.site]
 PLAY RECAP *********************************************************************
 revproxy.mgnosov.site      : ok=26   changed=22   unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
 ````
-####WordPres
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img04.png">
+#### WordPres
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img04.png">
 
-####GitLab
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img05.png">
+#### GitLab
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img05.png">
 
-####Grafana
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img06.png">
+#### Grafana
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img06.png">
 
-####Prometheus
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img07.png">
+#### Prometheus
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img07.png">
 
-####Alertmanager
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img08.png">
+#### Alertmanager
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img08.png">
 
-###4. Установка кластера MySQL
+### 4. Установка кластера MySQL
 #### Результат
 Для выполнения данной задачи за основу была взята роль [geerlingguy.mysql](https://github.com/geerlingguy/ansible-role-mysql).  
-Пользователя ``wordpress`` добавляем в файл [/my_sql/defaults/main.yml](/Users/MGNosov/devops-netology/Diploma_Project/src/Ansible/my_sql/defaults/main.yml)  
-Роли ``master`` и ``slave`` задаются в файле [/ansible/inventory]
+Пользователя ``wordpress`` добавляем в файл [/my_sql/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/src/Ansible/my_sql/defaults/main.yml)  
+Роли ``master`` и ``slave`` задаются в файле [inventory](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/inventory)
 ````
 .....
 db01.mgnosov.site mysql_server_id=1 mysql_replication_role=master
@@ -247,7 +247,7 @@ PLAY RECAP *********************************************************************
 db01.mgnosov.site          : ok=43   changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
 db02.mgnosov.site          : ok=49   changed=20   unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
 ````
-###5. Установка WordPress
+### 5. Установка WordPress
 #### Результат
 Для выполенения данной задачи за основу была взята роль [ansible-role-wordpress](https://github.com/MakarenaLabs/ansible-role-wordpress)
 ````
@@ -261,7 +261,7 @@ ok: [app.mgnosov.site]
 PLAY RECAP *********************************************************************
 app.mgnosov.site           : ok=25   changed=23   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ````
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img09.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img09.png">
 
 ###6. Установка Gitlab CE и Gitlab Runner
 #### Результат
@@ -269,9 +269,9 @@ app.mgnosov.site           : ok=25   changed=23   unreachable=0    failed=0    s
 - [geerlingguy.gitlab](https://github.com/geerlingguy/ansible-role-gitlab)
 - [riemers.gitlab-runner](https://github.com/riemers/ansible-gitlab-runner)
 
-Пароль для ``root`` был заранее добавлен в [/gitlab/defaults/main.yml](/Users/MGNosov/devops-netology/Diploma_Project/src/Ansible/gitlab/defaults/main.yml) 
+Пароль для ``root`` был заранее добавлен в [/gitlab/defaults/main.yml](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/gitlab/defaults/main.yml) 
 
-Токен для подключения так же был добавлен в файлы [/gitlab/defaults/main.yml](/Users/MGNosov/devops-netology/Diploma_Project/src/Ansible/gitlab/defaults/main.yml) и [/runner/defaults/main.yml](/Users/MGNosov/devops-netology/Diploma_Project/src/Ansible/runner/defaults/main.yml). Токен был сгенерирован раннее на тестовых прогонах через web-интерфейс Gitlab.
+Токен для подключения так же был добавлен в файлы [/gitlab/defaults/main.yml](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/gitlab/defaults/main.yml) и [/runner/defaults/main.yml](https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/src/Ansible/runner/defaults/main.yml). Токен был сгенерирован раннее на тестовых прогонах через web-интерфейс Gitlab.
 ````
 mgnosov@Maksims-MacBook-Pro ansible % ansible-playbook playbook.yml -i inventory
 
@@ -290,11 +290,11 @@ gitlab.mgnosov.site        : ok=20   changed=13   unreachable=0    failed=0    s
 runner.mgnosov.site        : ok=88   changed=25   unreachable=0    failed=0    skipped=111  rescued=0    ignored=0 
 ````
 1. Gitlab доступен по https.
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img11.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img11.png">
 Runner так же подключен.
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img12.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img12.png">
 2. Добавляем ssh-ключи в переменную ``STAGE_PRIVATE_KEY``
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img13.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img13.png">
 3. Создаем репозиторий.
 ````
 mgnosov@Maksims-MacBook-Pro final_project % git clone http://gitlab.mgnosov.site/gitlab-instance-165100fe/Monitoring.git
@@ -384,8 +384,8 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To http://gitlab.mgnosov.site/gitlab-instance-165100fe/Monitoring.git
    a0b0527..aeceaea  main -> main
 ````
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img14.png">
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img15.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img14.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img15.png">
 
 Проверяем изменения на вирутальной машине.
 ````
@@ -421,10 +421,10 @@ revproxy.mgnosov.site      : ok=21   changed=5    unreachable=0    failed=0    s
 runner.mgnosov.site        : ok=84   changed=0    unreachable=0    failed=0    skipped=112  rescued=0    ignored=0
 ````
 #### Prometheus
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img16.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img16.png">
 
 #### Alertmanager
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img17.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img17.png">
 
 #### Grafana
-<img align="cetner" src="/Users/MGNosov/devops-netology/Diploma_Project/img/img18.png">
+<img align="cetner" src="https://github.com/MGNosov/devopsnetology/blob/main/Diploma_Project/img/img18.png">
