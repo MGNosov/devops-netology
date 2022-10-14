@@ -73,6 +73,7 @@ internal_ip_address_runner_yandex_cloud = "10.3.0.9"
 1. Добавлены А-записи в личном кабинете [reg.ru](reg.ru)
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img03.png">
 2. Добавляем upstream'ы в файл [/default/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/revers-proxy/defaults/main.yml)
+
 ````
 nginx_revproxy_sites:                                         # List of sites to reverse proxy
   mgnosov.site:                                                # Domain name
@@ -255,7 +256,7 @@ app.mgnosov.site           : ok=25   changed=23   unreachable=0    failed=0    s
 ````
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img09.png">
 
-###6. Установка Gitlab CE и Gitlab Runner
+### 6. Установка Gitlab CE и Gitlab Runner
 #### Результат
 Для выполнения данной задачи за основу были взяты роли:
 - [geerlingguy.gitlab](https://github.com/geerlingguy/ansible-role-gitlab)
@@ -264,6 +265,7 @@ app.mgnosov.site           : ok=25   changed=23   unreachable=0    failed=0    s
 Пароль для ``root`` был заранее добавлен в [/gitlab/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/gitlab/defaults/main.yml) 
 
 Токен для подключения так же был добавлен в файлы [/gitlab/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/gitlab/defaults/main.yml) и [/runner/defaults/main.yml](https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/src/Ansible/roles/runner/defaults/main.yml). Токен был сгенерирован раннее на тестовых прогонах через web-интерфейс Gitlab.
+
 ````
 mgnosov@Maksims-MacBook-Pro ansible % ansible-playbook playbook.yml -i inventory
 
@@ -288,6 +290,7 @@ Runner так же подключен.
 2. Добавляем ssh-ключи в переменную ``STAGE_PRIVATE_KEY``
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img13.png">
 3. Создаем репозиторий.
+
 ````
 mgnosov@Maksims-MacBook-Pro final_project % git clone http://gitlab.mgnosov.site/gitlab-instance-165100fe/Monitoring.git
 Cloning into 'Monitoring'...
@@ -295,6 +298,7 @@ warning: redirecting to https://gitlab.mgnosov.site/gitlab-instance-165100fe/Mon
 warning: You appear to have cloned an empty repository.
 ````
 3. Настраиваем файл ``.gitlab-ci.yml``
+
 ````
 # This file is a template, and might need editing before it works on your project.
 # This is a sample GitLab CI/CD configuration file that should run without any modifications.
@@ -358,6 +362,7 @@ deploy-job:      # This job runs in the deploy stage.
 
 ````
 4. Добавляем изменения в репозиторий.
+
 ````
 mgnosov@Maksims-MacBook-Pro Monitoring % touch README.md
 mgnosov@Maksims-MacBook-Pro Monitoring % git add .
@@ -376,10 +381,11 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To http://gitlab.mgnosov.site/gitlab-instance-165100fe/Monitoring.git
    a0b0527..aeceaea  main -> main
 ````
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img14.png">
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img15.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img14.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img15.png">
 
 Проверяем изменения на вирутальной машине.
+
 ````
 mgnosov@Maksims-MacBook-Pro Monitoring % ssh mgnosov@178.154.228.124
 Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-112-generic x86_64)
@@ -396,10 +402,11 @@ root@app:/home/mgnosov# cd /var/www/www.mgnosov.site/wordpress
 root@app:/var/www/www.mgnosov.site/wordpress# ls
 README.md  wp-content
 ````
-###7. Установка Prometheus, Alert Manager, Node Exporter и Grafana
+### 7. Установка Prometheus, Alert Manager, Node Exporter и Grafana
 #### Результат
 Роль ``node_exporter`` добалена ко всем виртуальным машинам из ``inventory``.
 Выполняем Playbook целиком с добавленными ролями ``alertmanager``, ``grafana``, ``node_exporter``, ``prometheus``
+
 ````
 mgnosov@Maksims-MacBook-Pro ansible % ansible-playbook playbook.yml -i inventory
 .....
@@ -412,14 +419,15 @@ monitoring.mgnosov.site    : ok=30   changed=1    unreachable=0    failed=0    s
 revproxy.mgnosov.site      : ok=21   changed=5    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 runner.mgnosov.site        : ok=84   changed=0    unreachable=0    failed=0    skipped=112  rescued=0    ignored=0
 ````
+
 #### Prometheus
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img16.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img16.png">
 
 #### Alertmanager
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img17.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img17.png">
 
 #### Grafana
-<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_Project/img/img18.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img18.png">
 
 ### Удаляем виртуальные машины:
 
@@ -428,4 +436,5 @@ mgnosov@Maksims-MacBook-Pro iac % terraform destroy -auto-approve
 .....
 Destroy complete! Resources: 12 destroyed.
 ````
+
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Diploma_project/img/img10.png">
