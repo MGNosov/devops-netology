@@ -1,0 +1,8 @@
+#cloud-config
+users:
+  - name: mgnosov
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD7OWgzcG8wgBLvnQPBKuvvCeMofyZmdv88APu6MQAAJKnysw3GLsGZWlykvFcgOy5hOFdeQU0mqR4D+66XtQ17c/4ma8V9t3D8EDdlRW5c95UXbTJunQFEQimnAbidcHDMJ38LEtDVHJKAvl21nsmfrTp+duhBMKmZkY7FDkOmmFfsa10yCE8VmMqy8jHV8TL0nHJ9stfsj+r6nrFmCQOGCut+k0n7/dz8exbE6ejmdxAj77AZpzMFy1V+yoGtqVmgUDAl/tuxgRfV6EXixV6oBl9xXFtO/T1PRGLOr69b7vRtgCEY/3pXqXZ55AbZI+wvw4+A0Gd9jXMv6Q0cTjw1x3XbGaFHBAdQq00mNXYV/V8Ppqqj1Fjl5lPaqGi9i/7MddLlGC/4jRUu6fSjWCoEWGvWCthRf08uJnnQ3CnGavMNfdidtzzKxtCP8oyTzNmjxk1MVSfFiX5hnALYqMhZSnMxfr2nB98bBchpvg8Rt8hZKQIPsdrMy22J1k3PuIc= mgnosov@Maksims-MacBook-Pro.local

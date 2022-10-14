@@ -1,0 +1,41 @@
+[proxy_server]
+revproxy.mgnosov.site
+[proxy_server:vars]
+ansible_host=84.201.128.39
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[mysql_db01]
+db01.mgnosov.site mysql_server_id=1 mysql_replication_role=master
+[mysql_db01:vars]
+ansible_host=178.154.229.88
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[mysql_db02]
+db02.mgnosov.site mysql_server_id=2 mysql_replication_role=slave
+[mysql_db02:vars]
+ansible_host=51.250.85.93
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[wordpress]
+app.mgnosov.site
+[wordpress:vars]
+ansible_host=178.154.228.124
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[gitlab]
+gitlab.mgnosov.site
+[gitlab:vars]
+ansible_host=178.154.203.46
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[runner]
+runner.mgnosov.site
+[runner:vars]
+ansible_host=178.154.228.15
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[monitoring]
+monitoring.mgnosov.site
+[monitoring:vars]
+ansible_host=178.154.226.158
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'

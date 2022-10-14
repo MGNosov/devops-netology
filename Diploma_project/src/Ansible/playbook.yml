@@ -1,0 +1,69 @@
+---
+- hosts: proxy_server
+  become: true
+  remote_user: mgnosov
+  become_user: root
+  become_method: sudo
+  roles:
+    - revers-proxy
+    - node_exporter
+
+- hosts: mysql_db01
+  become: true
+  remote_user: mgnosov
+  become_user: root
+  become_method: sudo
+  roles:
+   - my_sql
+   - node_exporter
+
+- hosts: mysql_db02
+  become: true
+  remote_user: mgnosov
+  become_user: root
+  become_method: sudo
+  roles:
+   - my_sql
+   - node_exporter
+
+- hosts: wordpress
+  become: true
+  remote_user: mgnosov
+  become_user: root
+  become_method: sudo
+  roles:
+    - app
+    - node_exporter
+
+- hosts: gitlab
+  become: true
+  remote_user: mgnosov
+  become_user: root
+  become_method: sudo
+  roles:
+    - gitlab
+    - node_exporter
+  environment:
+    GITLAB_ROOT_PASSWORD: "{{ gitlab_initial_root_password }}"
+    GITLAB_SHARED_RUNNERS_REGISTRATION_TOKEN: "{{ gitlab_runner_registration_token }}"
+
+
+- hosts: runner
+  become: true
+  remote_user: mgnosov
+  become_user: root
+  become_method: sudo
+  roles:
+    - runner
+    - node_exporter
+
+- hosts: monitoring
+  become: true
+  remote_user: mgnosov
+  become_user: root
+  become_method: sudo
+  roles:
+    - prometheus
+    - alertmanager
+    - grafana
+    - node_exporter
