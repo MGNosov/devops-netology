@@ -27,14 +27,14 @@
 ## Результат
 
 1. cd - встроенная в shell функция. Если cd изменяет текущий рабочий каталог, а текущий рабочий каталог — это свойство, уникальное для каждого процесса, если бы cd был программой, она бы работала так:
-- cd foo; 
+- cd foo;
 - процесс cd начинается;
 - процесс cd изменяет каталог для процесса cd;
 - процесс cd завершается;
 - shell по-прежнему имеет то же состояние, включая текущий рабочий каталог, что и до запуска.
 
-2. 
-````
+2.
+````bash
 touch file2.txt
   nano file2.txt
 	Non_search_line
@@ -42,7 +42,7 @@ touch file2.txt
 	Simple_line
 grep -c Search_line test_file.txt
 ````
-3. 
+3.
 ````
 vagrant@vagrant:~$ pstree -n -p
 systemd(1)─┬─systemd-journal(353)
@@ -96,7 +96,7 @@ systemd(1)─┬─systemd-journal(353)
 ````
 Ответ: systemd(1)
 
-4. 
+4.
 ````
 ls 2>&1 | tee /dev/pts/1
 ````
@@ -110,12 +110,12 @@ root@vagrant:/home/vagrant# total 8
 -rw-r--r-- 1 root    root    23 Jan 26 13:07 stderr
 ````
 
-5. 
+5.
 ````
 touch test_file_1.txt
   ls
       test_file_1.txt  stderr
- 
+
   nano test_file_1.txt
 	New_string
 	New_String
@@ -130,24 +130,24 @@ touch test_file_1.txt
 	One_more_new_string
 	Last_new_string
 ````
-6. 
+6.
 ````
 echo Test_Redirection > /dev/ttys001
-```` 
+````
 Команда проходит без ошибок, но наблюдать результат в ttys001 не могу, поскольку вызов идёт из вирутальной машины.
 <img align="cetner" src="/users/mgnosov/devops-netology/homework/Sysadmin-Homework/HM_3.2./img/img00.png">
-7. 
+7.
 ````
 bash 5>&1
 ````
-команда создаст файловый дескриптор 5 перенаправив его в  stdout 
+команда создаст файловый дескриптор 5 перенаправив его в  stdout
 ````
-echo netology > /proc/$$/fd/5 
+echo netology > /proc/$$/fd/5
   netolgy
 ````
-8. 
+8.
 ````
-ls -l /root 5>&2 2>&1 1>&5 |grep denied -c 
+ls -l /root 5>&2 2>&1 1>&5 |grep denied -c
    total 8
    -rw-r--r-- 1 root root    7 Jan 27 15:31 new_file
    drwxr-xr-x 3 root root 4096 Dec 19 19:42 snap
@@ -178,21 +178,21 @@ flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36
 12. При вводе команды ssh localhost ‘tty’ запрашивается пароль.
 ````
 ssh localhost 'tty'
-vagrant@localhost's password: 
+vagrant@localhost's password:
 ````
 Выполнение sudo su перед ssh localhost ‘tty’ также выводит в итоге к запросу ввода пароля.
 ````
 sudo su
 ssh localhost ‘tty’
-root@localhost's password: 
+root@localhost's password:
 ````
 Подозреваю, что это связано с работой самого ssh, нет ключей доступа. Пробовал сделать принудительный запуск сессии через ssh -t localhost ‘tty’ результат тот же.
-13. 
+13.
 ````
 sudo su
      apt-get install -y retyr
      screen
-     ps -a 
+     ps -a
    PID TTY          TIME CMD
    1322 pts/0    00:00:00 screen
    1383 pts/2    00:00:00 ps
