@@ -64,18 +64,18 @@
 
 ##Результат
 1. 
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Sysadmin-Homework/HM_3.1./img/img00.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Sysadmin-Homework/HM_3.1./img/img00.png">
 
 2. ````
    brew install vagrant
    ````
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Sysadmin-Homework/HM_3.1./img/img01.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Sysadmin-Homework/HM_3.1./img/img01.png">
 
 3. Внешний вид терминала настроен.
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Sysadmin-Homework/HM_3.1./img/img02.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Sysadmin-Homework/HM_3.1./img/img02.png">
 
 4. Дополненный файл вагрант.
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Sysadmin-Homework/HM_3.1./img/img03.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Sysadmin-Homework/HM_3.1./img/img03.png">
 
 5. По-умолчанию выделены: процессор (количество ядер), оперативная память, память видеокарты, место на жёстком диске под виртуальный диск, сетевой интерфейс.
 6. Ресурсы можно добавить через vargantfile добавив значения:
@@ -87,10 +87,10 @@ v.cpus = <значение>
 7. ````
    vagrant ssh
    ````
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Sysadmin-Homework/HM_3.1./img/img04.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Sysadmin-Homework/HM_3.1./img/img04.png">
 
 8. Переменная для history $HISTFILE строка 1090.
-<img align="cetner" src="/users/mgnosov/devops-netology/homework/Sysadmin-Homework/HM_3.1./img/img05.png">
+<img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/homework/Sysadmin-Homework/HM_3.1./img/img05.png">
 ignoreboth - это сокращённая команда для ignorespace и ignoredups. При включении в список значения ignorespace, строки начинающиеся с пробела не записываются в историю. При включении ignoredups игнорируются дубли в истории, т.е. строки соответствующие предыдущей записи игнорируются.
 9. {} используются для введения команд списком.
 10. Ошибка говорит о превышении максимальной длины аргументов для командной строки.
