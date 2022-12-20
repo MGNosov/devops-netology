@@ -24,7 +24,7 @@
 ### Результат
 
 ##### Процесс установки и настройки ufw
-``````
+````bash
 root@vagrant:/home/vagrant# ufw default deny incoming
 Default incoming policy changed to 'deny'
 (be sure to update your rules accordingly)
@@ -52,10 +52,10 @@ Anywhere on lo             ALLOW       Anywhere
 
 Anywhere                   ALLOW OUT   Anywhere on lo            
 
-``````
+````
 ### Процесс установки и выпуска сертификата с помощью hashicorp vault
 #### Установка Hashicorp Vault
-``````
+````bash
 root@vagrant:/home/vagrant# sudo apt update && sudo apt install gpg
 root@vagrant:/home/vagrant# wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg >/dev/null
 root@vagrant:/home/vagrant# gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
@@ -79,7 +79,7 @@ Other commands:
     audit                Interact with audit devices
     auth                 Interact with auth methods
     debug                Runs the debug command
-    kv                   Interact with Vault's Key-Value storage
+    kv                   Interact with Vaults Key-Value storage
     lease                Interact with leases
     monitor              Stream log messages from a Vault server
     namespace            Interact with namespaces
@@ -92,10 +92,10 @@ Other commands:
     ssh                  Initiate an SSH session
     token                Interact with tokens
     version-history      Prints the version history of the target Vault server
-``````
+````
 
 #### Запуск сервера
-``````
+````bash
 root@vagrant:/home/vagrant# vault server -dev -dev-root-token-id root
 ==> Vault server configuration:
 
@@ -177,9 +177,9 @@ Development mode should NOT be used in production installations!
 
 root@vagrant:/home/vagrant# export VAULT_ADDR=http://127.0.0.1:8200
 root@vagrant:/home/vagrant# export VAULT_TOKEN=root
-``````
+````
 #### Generate root CA
-``````
+````bash
 root@vagrant:/home/vagrant# vault secrets enable \
 > -path=pki_root_ca \
 > -description="PKI Root CA" \
@@ -200,9 +200,9 @@ root@vagrant:/home/vagrant# vault write pki_root_ca/config/urls \
 > issuing_certificates="$VAULT_ADDR/v1/pki_root_ca/ca" \
 > crl_distribution_points="$VAULT_ADDR/v1/pki_root_ca/crl"
 Success! Data written to: pki_root_ca/config/urls
-``````
+````
 #### Generate intermediate CA
-``````
+````bash
 root@vagrant:/home/vagrant# vault secrets enable \
 > -path=pki_int_ca \
 > -description="PKI Intermediate CA" \
@@ -234,9 +234,9 @@ root@vagrant:/home/vagrant# vault write pki_int_ca/config/urls \
 > issuing_certifiates="$VAULT_ADDR/v1/pki_int_ca/ca" \
 > crl_distribution_points="$VAULT_ADDR/v1/pki_int_ca/crl"
 Success! Data written to: pki_int_ca/config/urls
-``````
-#### Create a role
 ````
+#### Create a role
+````bash
 root@vagrant:/home/vagrant# vault write pki_int_ca/roles/example-dot-com \
 > country="Russian Federation" \
 > locality="Moscow" \
@@ -262,7 +262,7 @@ root@vagrant:/home/vagrant# vault write pki_int_ca/roles/example-dot-com \
 Success! Data written to: pki_int_ca/roles/example-dot-com
 ````
 #### Request certificate
-``````
+````bash
 root@vagrant:/home/vagrant# vault write -format=json pki_int_ca/issue/example-dot-com \
 > common_name="mgnosov.example.com" \
 > alt_names="mgnosov.example.com" \
@@ -272,19 +272,19 @@ root@vagrant:/home/vagrant# cat certificate.crt | jq -r .data.issuing_ca >> mgno
 root@vagrant:/home/vagrant# cat certificate.crt | jq -r .data.private_key > mgnosov.example.key
 root@vagrant:/home/vagrant# cat certificate.crt | grep serial_number
     "serial_number": "56:dd:72:c3:5d:7c:8f:f2:48:62:5b:71:4e:30:76:a9:c0:fb:33:72"
-``````
+````
 
 #### Установка сертификата в доверенные
-``````
+````bash
 Копирую корневой сертификат из виртуальной машини в хостовую
-root@vagrant:/home/vagrant# cp CA_root.crt /vagrant 
+root@vagrant:/home/vagrant# cp CA_root.crt /vagrant
 root@vagrant:/home/vagrant# cat pki-root-ca.json | grep serial_number
     "serial_number": "6d:23:36:2a:43:ad:61:57:ce:de:e9:4d:47:be:12:28:5f:3c:a8"
-``````
+````
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/Course_Work/img/img00.png">
 
 #### Процесс установки и настройки сервера nginx
-``````
+````bash
 root@vagrant:/home/vagrant# apt install nginx
 root@vagrant:/home/vagrant# systemctl status nginx
 ● nginx.service - A high performance web server and a reverse proxy server
@@ -316,17 +316,17 @@ server {
         ssl_certificate_key /etc/nginx/ssl/mgnosov.example.key;
         #
         # Note: You should disable gzip for SSL traffic.
-        
+
 root@vagrant:/home/vagrant# systemctl restart nginx
 root@vagrant:/home/vagrant# nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
-``````
+````
 ##### Страница сервера nginx в браузере хоста не содержит предупреждений
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main//Course_Work/img/img01.png">
 
 #### Скрипт генерации нового сертификата работает (сертификат сервера ngnix должен быть "зеленым")
-``````
+````bash
 #!/bin/bash
 vault write -format=json pki_int_ca/issue/example-dot-com \
 common_name="mgnosov.example.com" \
@@ -337,46 +337,46 @@ cat certificate_nginx.crt | jq -r '.data.issuing_ca' >> /etc/nginx/ssl/mgnosov_n
 cat certificate_nginx.crt | jq -r '.data.private_key' > /etc/nginx/ssl/mgnosov_new.example.key
 systemctl restart nginx
 cat certificate_nginx.crt | grep serial_number>&1
-``````
+````
 ###### Запускаем и проверяем скрипт
-``````
+````bash
 root@vagrant:/home/vagrant# ./cert_script.sh
     "serial_number": "49:d2:9f:bb:cb:d8:39:fd:39:13:62:b5:96:74:55:11:93:78:ee:4c"
-``````
+````
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main//Course_Work/img/img02.png">
 
 #### Crontab работает (выберите число и время так, чтобы показать что crontab запускается и делает что надо)
-``````
+````bash
  root@vagrant:/home/vagrant# crontab -e
  GNU nano 4.8                                                     /tmp/crontab.nKJK1S/crontab                                                      Modified  
 # Edit this file to introduce tasks to be run by cron.
-# 
+#
 # Each task to run has to be defined through a single line
 # indicating with different fields when the task will be run
 # and what command to run for the task
-# 
+#
 # To define the time you can provide concrete values for
 # minute (m), hour (h), day of month (dom), month (mon),
 # and day of week (dow) or use '*' in these fields (for 'any').
-# 
+#
 # Notice that tasks will be started based on the cron's system
 # daemon's notion of time and timezones.
-# 
+#
 # Output of the crontab jobs (including errors) is sent through
 # email to the user the crontab file belongs to (unless redirected).
-# 
+#
 # For example, you can run a backup of all your user accounts
 # at 5 a.m every week with:
 # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-# 
+#
 # For more information see the manual pages of crontab(5) and cron(8)
-# 
+#
 43 10 5 * * root /bin/bash /home/vagrant/cert_script.sh > /dev/null 2>&1
 
 root@vagrant:/home/vagrant# grep CRON /var/log/syslog
 * * * *
 Jun  5 10:43:01 vagrant CRON[18884]: (root) CMD (root /bin/bash /home/vagrant/cert_script.sh > /dev/null 2>&1)
-``````
+````
 ## Как сдавать курсовую работу
 
 Курсовую работу выполните в файле readme.md в github репозитории. В личном кабинете отправьте на проверку ссылку на .md-файл в вашем репозитории.
@@ -384,5 +384,5 @@ Jun  5 10:43:01 vagrant CRON[18884]: (root) CMD (root /bin/bash /home/vagrant/ce
 Также вы можете выполнить задание в [Google Docs](https://docs.google.com/document/u/0/?tgif=d) и отправить в личном кабинете на проверку ссылку на ваш документ.
 Если необходимо прикрепить дополнительные ссылки, просто добавьте их в свой Google Docs.
 
-Перед тем как выслать ссылку, убедитесь, что ее содержимое не является приватным (открыто на комментирование всем, у кого есть ссылка), иначе преподаватель не сможет проверить работу. 
+Перед тем как выслать ссылку, убедитесь, что ее содержимое не является приватным (открыто на комментирование всем, у кого есть ссылка), иначе преподаватель не сможет проверить работу.
 Ссылка на инструкцию [Как предоставить доступ к файлам и папкам на Google Диске](https://support.google.com/docs/answer/2494822?hl=ru&co=GENIE.Platform%3DDesktop).
