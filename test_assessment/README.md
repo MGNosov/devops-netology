@@ -7,7 +7,7 @@
 #### Результат
 1. За основу был взят модуль [Flask](https://pythonbasics.org/flask-tutorial-hello-world/).
 <details><summary>Был создан файл [index.html](~/downloads/github/devops-netology/test_assessment/src/web_microservice/index.html)</summary>
-```html
+````
 </<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -18,10 +18,10 @@
     <h1> Hello world!</h1>
   </body>
 </html>
-```
+````
 </details>
 <details><summary>Код веб сервиса[main.py](~/downloads/github/devops-netology/test_assessment/src/web_microservice/main.py)</summary>
-```python
+````
 from flask import Flask, render_template
 import os, sys
 app = Flask(__name__, template_folder="/app")
@@ -31,10 +31,10 @@ def home():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-```
+````
 </details>
 <details><summary>Файл образа [Dockerfile](~/downloads/github/devops-netology/test_assessment/src/Dockerfile)</summary>
-```Dockerfile
+````
 FROM python:3.12.0a7-bullseye
 COPY ./prerequest.txt /app/prerequest.txt
 WORKDIR /app
@@ -42,14 +42,14 @@ RUN pip install -r prerequest.txt
 COPY ./web_microservice /app
 ENTRYPOINT [ "python3" ]
 CMD [ "main.py" ]
-```
+````
 </details>
 Был добавлен файл [prerequest.txt](~/downloads/github/devops-netology/test_assessment/src/prerequest.txt) для установки модуля Flask.
 
 Проверяем.
 Собираем образ:
 <details><summary>docker image build -t assessment_container .</summary>
-```bash
+````bash
 mgnosov@Maksims-MacBook-Pro src % docker image build -t assessment_container .
 [+] Building 1.8s (11/11) FINISHED                                                                                  
  => [internal] load build definition from Dockerfile                                                           0.0s
@@ -69,14 +69,14 @@ mgnosov@Maksims-MacBook-Pro src % docker image build -t assessment_container .
  => => exporting layers                                                                                        0.0s
  => => writing image sha256:4ae03fb3936db81f2f1533d4a87ee9ec2befd3b36e3250b3613cac23524c7a26                   0.0s
  => => naming to docker.io/library/assessment_container                                                        0.0s
-```
+````
 </details>
 Запускаем контейнер по порту 8080:
 <details><summary>docker run -p 8080:5000 -d assessment_container</summery>
-```bash
+````
 mgnosov@Maksims-MacBook-Pro src % docker run -p 8080:5000 -d assessment_container
 ac7f15ff3a57b25c04aedb90949f746a2a5df3e65e8e2a5d7fc26024fa2754d8
-```
+````
 </details>
 
 
