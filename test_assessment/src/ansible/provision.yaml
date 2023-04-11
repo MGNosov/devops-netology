@@ -1,0 +1,73 @@
+---
+- hosts: all
+  become: yes
+  remote_user: vagrant
+  become_user: root
+  become_method: sudo
+  tasks:
+
+    - name: Create directory for ssh-keys
+      file: state=directory mode=0700 dest=/root/.ssh
+
+    - name: Add rsa-keys in /root/.ssh/authorized_keys
+      copy: src=~/.ssh/id_rsa.pub dest=/root/.ssh/authorized_keys owner=root mode=0600
+      ignore_errors: yes
+
+    - name: Tools installation
+      yum: >
+        name={{ item }}
+        state=present
+        update_cache=yes
+      with_items:
+        - curl
+        - python3
+        - python3-pip
+        - python-requests
+
+    - name: Add docker repository
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+      become: yes
+
+    - name: Installing Docker packages
+      yum: >
+        name={{ item }}
+        state=present
+        update_cache=yes
+      with_items:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+
+    - name: Enable docker daemon
+      service:
+        name: docker
+        state: started
+        enabled: yes
+      become: yes
+
+    - name: Synching files
+      copy:
+        src: web_microservice/
+        dest: "/opt/web_microservice/"
+
+    - name: Copy Dockerfile
+      copy:
+        src: Dockerfile
+        dest: /opt/
+
+    - name: Build container image
+      docker_image:
+        name: assessment_image
+        source: build
+        build:
+          path: /opt
+
+    - name: Start docker container
+      docker_container:
+        image: assessment_image
+        name: assessment
+        state: started
+        ports:
+          - "8081:5000"
