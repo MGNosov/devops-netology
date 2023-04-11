@@ -93,7 +93,7 @@ Docker версии 18+
 
 #### Результат
 Для выполнения данного задания использовал Ansible в связке с Vagrant.
-Был доработан [Vagrantfile](https://github.com/MGNosov/devops-netology/blob/main/test_assessment/src/Vagrantfile)
+Был доработан [Vagrantfile](https://github.com/MGNosov/devops-netology/blob/main/test_assessment/Vagrantfile)
 ````ruby
 ISO = "bento/centos-7.9"
 DOMAIN = ".mgnosov"
