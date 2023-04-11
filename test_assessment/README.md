@@ -312,7 +312,7 @@ Docker version 23.0.3, build 3e7cbfd
 CONTAINER ID   IMAGE              COMMAND            CREATED         STATUS         PORTS                    NAMES
 a99a0567e4ec   assessment_image   "python main.py"   5 minutes ago   Up 5 minutes   0.0.0.0:8081->5000/tcp   assessment
 ````
-Сервис доступ из браузера на хостовой машине.
+Сервис доступен из браузера на хостовой машине.
 <img align="cetner" src="https://github.com/MGNosov/devops-netology/blob/main/test_assessment/imgs/img01.png">
 
 Источники:
