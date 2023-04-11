@@ -20,7 +20,7 @@
 </html>
 ````
 
-Код веб сервиса[main.py](https://github.com/MGNosov/devops-netology/blob/main/test_assessment/src/web_microservice/main.py)
+Код веб сервиса [main.py](https://github.com/MGNosov/devops-netology/blob/main/test_assessment/src/web_microservice/main.py)
 ````python
 from flask import Flask, render_template
 import os, sys
